@@ -11,8 +11,15 @@ const app = express();
 
 const linebotParser = bot.parser();
 
+
+// require core module `file system`
+var fs = require( 'fs' );
+ 
+// read file
+var outputData = fs.readFileSync( './data.dat' ).toString();
+
 app.get('/',function(req,res){
-    res.send('Hello World!');
+    res.send('TEST:'+outputData);
 });
 
 app.post('/linewebhook', linebotParser);
